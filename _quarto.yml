@@ -2,36 +2,36 @@ project:
   type: website
 
 website:
-  title: "alex hayes"
-  site-url: https://www.alexpghayes.com
-  repo-url: https://github.com/alexpghayes/quarto-blog
+  title: "Josiah McMillan"
+  site-url: https://www.josiahmcmillan.com
+  repo-url: https://github.com/josiahmcmillan/quarto-blog
   repo-actions: [edit, issue]
   open-graph: true
-  twitter-card:
-    creator: "@alexpghayes"
-    card-style: summary_large_image
+  # twitter-card:
+  #   creator: "@alexpghayes"
+  #   card-style: summary_large_image
   navbar:
     right:
       - text: about
         file: index.qmd
       - posts.qmd
-      - papers/index.qmd
-      - code/index.qmd
-      - teaching/index.qmd
-      - talks/index.qmd
+      # - papers/index.qmd
+      # - code/index.qmd
+      # - teaching/index.qmd
+      # - talks/index.qmd
       - text: resume
         file: resume/index.qmd
       - icon: github
-        href: https://github.com/alexpghayes
-      - icon: twitter
-        href: https://twitter.com/alexpghayes
+        href: https://github.com/josiahmcmillan
+      # - icon: twitter
+        # href: https://twitter.com/alexpghayes
       - icon: linkedin
-        href: https://www.linkedin.com/in/alexpghayes/
-  google-analytics: "G-G6PQFW2XSK"
+        href: https://www.linkedin.com/in/josiahmcmillan/
+  # google-analytics: "G-G6PQFW2XSK"
   page-footer: 
     right:
       - text: website source
-        href: https://github.com/alexpghayes/quarto-blog
+        href: https://github.com/josiahmcmillan/quarto-blog
 
 format:
   html:
