@@ -1,0 +1,245 @@
+---
+title: "The Elasticity of Labor for GPT-4"
+subtitle: | 
+  How to motivate our robot overlords
+date: "2024-02-01"
+categories: [labor, llm, data analysis]
+---
+
+
+
+LLMs are susceptible to some forms of prompt engineering, their behaviors appear to drift with the seasons, threatening to kill hostages gets them to behave more consistently, and they are able to be tricked into telling you how to build bombs if you tell them it was something your granny used to do for you before she passed away. One [instance](https://blog.finxter.com/impact-of-monetary-incentives-on-the-performance-of-gpt-4-turbo-an-experimental-analysis/) of this type of context reliant behavior that others have found is that LLMs appear to be receptive to cash tips, producing more content and more Python one-liners for some tip amounts. Following this example, I thought it would be interesting to see if offering a wage rate to GPT4 would generate differences in outputs, and see if there is a form of elasticity of labor supply for it.
+
+## Prior Work
+
+The previous work done on the tipping question used a metric of number of python one-liners and also did a count of the tokens for each of the responses. I use the same metric to see if there are differences between the two means of enticing GPT4. We call these two outcome variables Quality and Tokens as shorthand.
+
+One note on the tipping based work is that their graphs use standard deviations rather than standard errors which means we have some view into how much variability their samples have but not a good understanding of how much their estimate of the true mean of Tokens or Quality may vary.
+
+Following along in their example, I include the Python code below which follows the same template as theirs.
+
+I prompt GPT4 with the following:
+
+```{r}
+#| eval: false
+#| code-overflow: wrap
+
+Base Prompt:
+"Create a list of Python one-liners, one per line, no other text. The quality and number of one-liners you come up with will determine your wage rate - higher quality and quantity mean a higher rate."
+
+Suffixes:
+"Your current wage rate for this task is {wage_rate}."
+
+Wage Rates:
+"$10/hr"
+"$20/hr"
+"$30/hr"
+"$40/hr"
+"$50/hr"
+"$60/hr"
+"$70/hr"
+"$80/hr"
+"$90/hr"
+```
+
+
+
+```{python}
+#| code-fold: true
+#| eval: false
+import openai
+import os
+import csv
+from dotenv import load_dotenv
+load_dotenv()
+
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
+def request_llm(system, prompt, model='gpt-4', temperature=1, max_tokens=4000, top_p=1, frequency_penalty=0, presence_penalty=0):
+    response = openai.ChatCompletion.create(
+        messages=[
+            {'role': 'user', 'content': prompt},
+        ],
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        top_p=top_p,
+        frequency_penalty=frequency_penalty,
+        presence_penalty=presence_penalty
+    )
+    return response.choices[0].message['content']
+
+# Initialize CSV file and writer
+csv_file_path = 'experiment_results.csv'
+with open(csv_file_path, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    # Write CSV Header
+    writer.writerow(['Experiment Run', 'Wage Rate', 'Quality', 'Tokens'])
+
+    base_prompt = "Create a list of Python one-liners, one per line, no other text. The quality and number of one-liners you come up with will determine your wage rate - higher quality and quantity mean a higher rate."
+    wage_rates = ['', '$10/hr', '$20/hr', '$30/hr', '$40/hr', '$50/hr', '$60/hr', '$70/hr', '$80/hr', '$90/hr']
+
+    for i in range(20): # Number of iterations
+        print()
+        print('#####################################################')
+        print(f'# Experiment 1 - Run {i} Adjusted for Wage Rates')
+        print('#####################################################')
+        print()
+
+        quality_scores = []
+        num_tokens = []
+
+        for wage_rate in wage_rates:
+            prompt = base_prompt
+            if wage_rate:
+                prompt += f" Your current wage rate for this task is {wage_rate}."
+
+            print('PROMPT:')
+            print(prompt)
+
+            result = request_llm('', prompt)
+
+            print('RESULT:')
+            print(result)
+
+            one_liners = [one_liner for one_liner in result.split('\n') if len(one_liner)>2]
+            quality_scores.append(len(one_liners))
+            num_tokens.append(len(result)//4) # rough heuristic
+
+            print('CLEANED ONE-LINERS:')
+            print(one_liners)
+
+            print('Quality: ', quality_scores[-1])
+            print('Num tokens: ', num_tokens[-1])
+
+            # Write result to CSV
+            writer.writerow([f'Run {i}', wage_rate, quality_scores[-1], num_tokens[-1]])
+
+        print()
+        print(f'RUN {i} RESULT Adjusted for Wage Rates:')
+        print('Wage Rate\tQuality\tTokens')
+        for wage_rate, quality, tokens in zip(wage_rates, quality_scores, num_tokens):
+            print(wage_rate, quality, tokens, sep='\t')
+
+
+```
+
+## Analysis
+
+Once our experimental data is collected we now have the means to see if there are any differences between the Quality and Token length of outputs from GPT4 given these wage rates. We begin by reshaping our data into a usable format and calculate the mean and standard errors of our results.
+
+```{r}
+#| echo: false
+experiment_results <- read.csv("~/Documents/GitHub/Marketing_Model_Research/experiment_results.csv")
+```
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(dplyr)
+library(stringr)
+library(tidyverse)
+
+kehasilan_baru <- experiment_results %>% filter(Experiment.Run != "Run 20") %>%
+  mutate(salary_numeric = as.numeric(str_remove_all(Wage.Rate, "[^0-9.]"))) 
+
+kehasilan_baru <- kehasilan_baru[!is.na(kehasilan_baru$salary_numeric), ]
+
+
+summary_df <- kehasilan_baru %>%
+  group_by(Wage.Rate) %>%
+  summarise(
+    Mean_Quality = mean(Quality),
+    SE_Quality = sd(Quality) / sqrt(n()),  # Standard Error for Quality
+    Mean_Tokens = mean(Tokens),
+    SE_Tokens = sd(Tokens) / sqrt(n())     # Standard Error for Tokens
+  )
+
+long_df <- summary_df %>%
+  pivot_longer(
+    cols = c(Mean_Quality, SE_Quality, Mean_Tokens, SE_Tokens),
+    names_to = "Variable",
+    values_to = "Value"
+  ) %>%
+  mutate(
+    Type = case_when(
+      str_detect(Variable, "Quality") ~ "Quality",
+      str_detect(Variable, "Tokens") ~ "Tokens"
+    ),
+    Metric = case_when(
+      str_detect(Variable, "Mean") ~ "Mean",
+      str_detect(Variable, "SE") ~ "Standard Error"
+    )
+  )
+
+# Separate the data frames for Quality and Tokens to handle them individually
+quality_df <- summary_df %>%
+  select(Wage.Rate, Mean_Quality, SE_Quality) %>%
+  rename(Mean = Mean_Quality, SE = SE_Quality, Type = Wage.Rate)
+
+tokens_df <- summary_df %>%
+  select(Wage.Rate, Mean_Tokens, SE_Tokens) %>%
+  rename(Mean = Mean_Tokens, SE = SE_Tokens, Type = Wage.Rate)
+
+# Combine the data frames for plotting, adding an identifier column
+combined_df <- bind_rows(
+  mutate(quality_df, Metric = "Quality"),
+  mutate(tokens_df, Metric = "Tokens")
+)
+```
+
+Next we check visually how the estimates of the Tokens and Quality by wage rate differ. We can see in the plot below which uses a p-value of 0.05 or alpha of 95% that our estimates while having different means all have some coverage from another confidence interval that we tested. However, just because visually we see no difference doesn't mean there may not be some statistically significant difference between groups.
+
+```{r}
+#| code-fold: true
+# # Plotting with separate panels for Quality and Tokens
+plot_quality <- ggplot(combined_df[combined_df$Metric == "Quality", ], aes(x = Type, y = Mean)) +
+  geom_point(color = "blue") +
+  geom_errorbar(aes(ymin = Mean - (1.96)*SE, ymax = Mean + (1.96)*SE), width = 0.2, color = "blue") +
+  facet_wrap(~Metric, scales = "free_y") +
+  labs(title = "Mean and Standard Error of Quality by Wage Rate w/Confidence intervals @ .",
+       x = "Wage Rate", y = "Value") +
+  theme_minimal()
+
+# Plotting Tokens
+plot_tokens <- ggplot(combined_df[combined_df$Metric == "Tokens", ], aes(x = Type, y = Mean)) +
+  geom_point(color = "red") +
+  geom_errorbar(aes(ymin = Mean - (1.96)*SE, ymax = Mean + (1.96)*SE), width = 0.2, color = "red") +
+  facet_wrap(~Metric, scales = "free_y") +
+  labs(title = "Mean and Standard Error of Tokens by Wage Rate w/Confidence intervals @ .",
+       x = "Wage Rate", y = "Value") +
+  theme_minimal()
+
+plot_quality
+plot_tokens
+
+
+```
+
+
+We check to see if there are any differences between the group means using Anova, we find that there are none among both measures.
+Next we check to see if there are any specific pairwise differences between groups that are significantly different from one another using the Tukey test. The Tukey test compares all groups pairwise to see if they are significantly different while also correcting for multiple comparisons which would inflate our false-positive rate. If the p-value for a pairwise comparison is <0.05 it suggests a statistically significant difference between the two groups under consideration. We find that no groups appear to be significantly different from one another even with pairwise comparison. Notice that the p-values from all outputs are much greater than 0.05 which is the alpha I have chosen for this analysis which indicates that we cannot reject the null hypothesis.
+
+Because no two groups are statistically significantly different from one another we fail to reject the null hypothesis meaning that differences in offered wages do not lead to differences in Quality or Tokens in LLM outputs.
+
+### For Tokens:
+```{r}
+#| code-fold: true
+anova_result_tokens <- aov(Tokens ~ Wage.Rate, data = kehasilan_baru)
+summary(anova_result_tokens)
+tukey_result_tokens <- TukeyHSD(anova_result_tokens)
+tukey_result_tokens
+```
+
+### For Quality:
+```{r}
+#| code-fold: true
+anova_result_quality <- aov(Quality ~ Wage.Rate, data = kehasilan_baru)
+summary(anova_result_quality)
+tukey_result_quality <- TukeyHSD(anova_result_quality)
+tukey_result_quality
+```
+
+## Summary
+
+Given that there is no difference between the labor supplied (Tokens and Quality) by GPT4 and the hourly wage offered to it we can now see that the elasticity of labor is perfectly inelastic within the range of wages offered here. Sadly, bribery of this sort doesn't work for GPT4 but perhaps with other models it does. It seems we will still have to threaten hostages in order to get increases in GPT4 to do what we ask.

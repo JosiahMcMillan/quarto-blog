@@ -7,11 +7,16 @@ about:
   image-shape: rounded
 ---
 
-I'm a PhD candidate in Statistics at the University of Wisconsin-Madison, where I am co-advised by [Keith Levin](https://pages.stat.wisc.edu/~kdlevin/) and [Karl Rohe](http://pages.stat.wisc.edu/~karlrohe/). I study spectral methods for network analysis, causal inference, and causal inference on networks. I blog about statistics, programming, and data.
+I'm a recent graduate with a Master's Degree in Statistics from the Katholieke Universiteit of Leuven (KU Leuven) my degree track was Theoretical Statistics and Data Science. I completed my [thesis]() exploring count data models specifically I characterized a family of functions which were an extension of the Poisson which had greater flexibility in the dispersion settings and compared those to other count data models including tje Conway-Maxwell-Poisson Model. My previous work experience was focused on marketing data. I blog about statistics and data.  
+
+<!-- I'm a PhD candidate in Statistics at the University of Wisconsin-Madison, where I am co-advised by [Keith Levin](https://pages.stat.wisc.edu/~kdlevin/) and [Karl Rohe](http://pages.stat.wisc.edu/~karlrohe/). I study spectral methods for network analysis, causal inference, and causal inference on networks. I blog about statistics, programming, and data. -->
 
 ### I'm looking for a job!
 
-- I am an experienced `R` package developer and open-source project maintainer. You might know me from my work on [`broom`](https://broom.tidymodels.org/), a popular open-source `R` package in the `tidyverse`.
+
+
+
+<!-- - I am an experienced `R` package developer and open-source project maintainer. You might know me from my work on [`broom`](https://broom.tidymodels.org/), a popular open-source `R` package in the `tidyverse`.
 
 - I enjoy writing and care a lot about explaining things clearly. I'm particularly proud of [this explanation of overfitting](./post/2020-01-06_overfitting-a-guide-tour/) and [this explanation of hypothesis testing](./post/2022-11-02-hypothesis-testing-by-example/).
 
@@ -21,7 +26,7 @@ I'm a PhD candidate in Statistics at the University of Wisconsin-Madison, where 
 
 - I love to collaborate with social scientists and product teams on involved projects.
 
-You can find my resume [here](./resume/). I'm currently based in Madison, WI.
+You can find my resume [here](./resume/). I'm currently based in Madison, WI. -->
 
 <!-- - I'm particularly well-suited for roles as a statistician, research scientist, research software engineer, or data scientist. -->
 

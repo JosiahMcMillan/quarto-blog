@@ -1,0 +1,569 @@
+---
+title: "Chess Ratings and Gender gaps"
+subtitle: | 
+  revisiting sampling bias
+date: "2024-02-28"
+categories: [chess, sampling, bias, simulation]
+editor: visual
+cache: true
+df_print: tibble
+format: html
+---
+
+<!-- 
+---
+title: "Chess Ratings and Gender gaps"
+editor: visual
+cache: true
+--- -->
+
+
+Some have posited that there are differences between men and women which spring out of some genetic component somewhere deep in the chess parts of the brain that were responsible for early human victories over our greatest animal adversaries -- allowing us to stall for time with a friendly game of chess until members of our tribe could come spear our adversaries while played for a draw. Thus chess skill would necessarily be unevenly distributed among genders much as hunting was before our species settled down to enjoy some agriculture. Still others believe that chess has an issue with too few women playing which is what explains the majority of the gap between the performance at the highest levels of chess. Due to a lack of recorded games from prehistory, I instead seek to show this second explanation is sufficient for explaining this variation between the two genders in terms of performance.
+
+[Other authors](https://en.chessbase.com/post/what-gender-gap-in-chess) have discussed this topic somewhat at length and my code here is adapted from theirs, however my work here covers the whole universe of FIDE ratings rather than only the Indian ratings which should allow us to determine if this sampling variability explanation is merely an Indian phenomena or a broader phenomena.
+
+Due to Covid-19 impacting the number of chess competitions held I use 2019 data and take the average of every players standard ratings for the year to avoid some of the individual variability in ratings throughout the year, this also helps to keep more players in our dataset as those with only one tournament to their name from March can be compared to those who have multiple tournaments from other months not including March. 
+
+```{r}
+#| echo: false
+#| output: false
+
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+players <- read.csv("~/Downloads/players.csv")
+ratings_2019 <- read.csv("~/Downloads/ratings_2019.csv")
+library(dplyr)
+
+if (!require("pwr", quietly = TRUE)) {
+  install.packages("pwr")
+}
+library(pwr)
+
+```
+
+```{r}
+#| echo: false
+ratings_2019_clean <- ratings_2019[!is.na(ratings_2019$rating_standard), ]
+players_cleaned <- players %>% filter(yob < 2001 & yob > 1900)
+
+
+average_rating_standard <- ratings_2019_clean %>%
+  group_by(fide_id) %>%
+  summarise(average_rating_standard = mean(rating_standard, na.rm = TRUE))
+
+
+joined_df <- average_rating_standard %>%
+  left_join(players_cleaned, by = "fide_id")
+
+joined_df <- joined_df[!is.na(joined_df$gender), ]
+
+
+rating <- joined_df
+```
+
+# Statistical Background 
+If you're not interested in the general theory of sampling variability feel free to skip this section. 
+
+When sampling from a distribution we can generally expect that larger samples are going to include more extreme values from the tails which will greatly influence values such as maximums or minimums. In our discussion of chess our focus is on detecting if the difference between the greatest ELO values is influenced by this sampling size behavior. Because visually we can see that there is a long thin right tail after 2500 ELO.
+
+```{r}
+#| echo: false
+
+
+
+num_bins <- 40
+breaks <- seq(min(rating$average_rating_standard), 2900, length.out = num_bins + 1)
+
+# Create a histogram with increased bin resolution
+hist(rating$average_rating_standard, 
+     main = "Histogram of Average Rating",  # Title of the histogram
+     xlab = "Average Rating",  # Label for the x-axis
+     ylab = "Frequency",  # Label for the y-axis
+     col = "skyblue",  # Color of the bars
+     border = "black",  # Color of the borders of the bars
+     breaks = breaks  # Specify the breaks
+)
+```
+
+## Heavy tails
+In order to demonstrate on a toy example we can sample from a heavy-tailed distribution and see how our maximums and minimums change as the sample size changes. Visually we can see how the coverage of the x-axis increases with the increase in sample size in the plots below. 
+
+```{r}
+#| echo: false
+# Load necessary libraries
+library(ggplot2)
+
+# Set seed for reproducibility
+set.seed(123)
+
+```
+
+```{r}
+
+# Sample sizes to generate
+sample_sizes <- c(100, 1000, 10000)
+
+# Initialize list to store extremes for later comparison
+extremes <- list()
+
+# Generate samples and prepare for plotting
+data <- data.frame()
+for (size in sample_sizes) {
+  sample <- rcauchy(size)
+  
+  # Calculate and store extremes
+  min_val <- min(sample)
+  max_val <- max(sample)
+  extremes[[length(extremes) + 1]] <- c(min_val, max_val)
+  
+  # Prepare data for plotting
+  temp_data <- data.frame(Value = sample, Size = factor(size))
+  data <- rbind(data, temp_data)
+}
+
+# Filter the data to remove extreme values for better visualization
+data <- subset(data, Value > -25 & Value < 25)
+
+# Plot using ggplot2
+ggplot(data, aes(x=Value, fill=Size)) +
+  geom_histogram(bins=50, position="identity", alpha=0.6) +
+  scale_fill_discrete(name="Sample Size") +
+  labs(title="Comparison of Cauchy Samples", x="Value", y="Frequency") +
+  theme_minimal()
+
+```
+
+And we find stark differences between the maximums and minimums in our samples.
+```{r}
+# Print extremes
+for (i in 1:length(sample_sizes)) {
+  size <- sample_sizes[i]
+  min_val <- extremes[[i]][1]
+  max_val <- extremes[[i]][2]
+  cat(sprintf("Sample size %d: Min %.2f, Max %.2f\n", size, min_val, max_val))
+}
+```
+
+## Normal distribution
+Even for distributions that are not heavy-tailed such as the normal distribution with a mean of 0 and standard deviation of 1 we can see that the maximum and minimum values are increasing in absolute value for increasing sample sizes such that the minimum and the maximum get further from the mean. 
+
+```{r}
+extremes <- list()
+data <- data.frame()
+
+for (size in sample_sizes) {
+  sample <- rnorm(size)
+  
+  # Calculate and store extremes
+  min_val <- min(sample)
+  max_val <- max(sample)
+  mean_val <- mean(sample)
+  extremes[[length(extremes) + 1]] <- c(min_val, max_val)
+  
+  # Prepare data for plotting
+  temp_data <- data.frame(Value = sample, Size = factor(size), Mean = mean_val)
+  data <- rbind(data, temp_data)
+}
+
+# Filter the data to remove extreme values for better visualization
+data <- subset(data, Value > -25 & Value < 25)
+
+# Plot using ggplot2
+ggplot(data, aes(x=Value, fill=Size)) +
+  geom_histogram(bins=50, position="identity", alpha=0.6) +
+  scale_fill_discrete(name="Sample Size") +
+  labs(title="Comparison of Cauchy Samples", x="Value", y="Frequency") +
+  theme_minimal()
+
+
+```
+
+It doesn't mean the samples are going to have their maximums or minimums deterministically increase with the increase of the sample size, but the probability that we sample a greater maximum or lower minimum increases as the sample size increases.
+```{r}
+# Print extremes
+for (i in 1:length(sample_sizes)) {
+  size <- sample_sizes[i]
+  min_val <- extremes[[i]][1]
+  max_val <- extremes[[i]][2]
+  cat(sprintf("Sample size %d: Min %.2f, Max %.2f\n", size, min_val, max_val))}
+
+```
+
+
+
+With all of this background in mind we can proceed to our analysis of the realworld data. 
+
+# Analysis
+I begin by loading in the data, removing players who do not have a standard rating and ensuring that we do not include Juniors (<18 years old players) in our ratings as their ratings fluctuate more than those of older players. 
+
+I begin by splitting our data by gender and looking at the basic stats. I find that the top 20 chess players in the world are *all* men for this data. Additionally we can see that the number of males in the sample is an order of magnitude larger than that of females while the difference in the top ELO is ~190 points.
+```{r}
+#| echo: false
+# Splitting by gender
+rating_M <- rating[(rating$gender == "M"), ]
+rating_F <- rating[(rating$gender == "F"), ]
+
+# Basic stats
+n <- count(rating)$n
+n_M <- count(rating_M)$n
+n_F <- count(rating_F)$n
+pF <- (n_F / n) * 100
+
+max_M <- round(max(rating_M$average_rating_standard))
+max_F <- round(max(rating_F$average_rating_standard))
+
+basic_stats <- data.frame(
+  Category = c("Male Max ELO", "Female Max ELO", "Count Male", "Count Female"),
+  Value = round(c(max_M, max_F, n_M, n_F))
+)
+```
+
+```{r}
+basic_stats
+```
+
+```{r}
+#| echo: false
+best_M <- rating_M[which.max(rating_M$average_rating_standard),]
+best_F <- rating_M[which.max(rating_F$average_rating_standard),]
+```
+
+We can see the names of the top 20 players in our data, and further the gender split which it turns out is entirely male.
+```{r}
+rating_ordered <- rating[order(rating$average_rating_standard, decreasing = TRUE),]
+I_top <- head(rating_ordered, 20)
+table(I_top$gender)
+table(I_top$name)
+```
+
+
+```{r}
+#| echo: false
+mu_M <- mean(rating_M$average_rating_standard)
+mu_F <- mean(rating_F$average_rating_standard)
+
+std_M <- round(sd(rating_M$average_rating_standard))
+std_F <- round(sd(rating_F$average_rating_standard))
+
+
+rating_edges <- seq(1000, 2800, by = 50)
+rating_centers <- head(rating_edges, -1) + 25
+
+min_value <- min(rating_M$average_rating_standard)
+max_value <- max(rating_M$average_rating_standard)
+n_breaks <- 37  # Adjust the number of breaks as needed
+
+# Create 'rating_edges' to cover the entire range with n_breaks
+rating_edges <- seq(min_value, max_value, length.out = n_breaks)
+
+# Create the histogram with the updated 'rating_edges' and store the counts in 'h_M'
+h_M <- hist(rating_M$average_rating_standard, breaks = rating_edges, plot = FALSE)$counts
+
+
+h_F <- hist(rating_F$average_rating_standard, breaks = rating_edges, plot = FALSE)$counts
+hn_M <- h_M / n_M
+hn_F <- h_F / n_F
+
+mu_std_table <- data.frame(
+  Category = c("mean Male", "mean Female", "standard deviation Male", "standard deviation Female"),
+  Value = round(c(mu_M, mu_F, std_M, std_F))
+)
+
+```
+
+Here we take some of the basic statistics of the male and female ratings and we can see that there is a ~100 point difference between the two groups' mean ELO.
+
+```{r}
+mu_std_table
+```
+
+
+Using the same method as Wei Ji, we do a permutation of the ratings without respect to gender. So what that means is we take the number of women and men in the sample, and draw samples with those same sizes from the pooled data. This means that we will get samples with the size of the same smaller size that women represent in our real data but including males. This will allow us to see how much of the variation between men and women is simply due to the fact that the sample of women who do chess is much smaller than that of men.
+```{r}
+library(parallel)
+
+# Assuming ndraws, n_large, rating$average_rating_standard are defined
+ndraws <- 10000 # example value
+n_large <- n_M
+n_small <- n_F
+
+
+# Detect the number of available cores
+no_cores <- detectCores() - 1  
+
+# Define a function to perform what was originally in the loop
+perform_draw <- function(i) {
+  rating_perm <- sample(rating$average_rating_standard)
+  draw_large <- rating_perm[1:n_large]
+  draw_small <- rating_perm[(n_large + 1):length(rating_perm)]
+  
+  c(max_large = max(draw_large), max_small = max(draw_small))
+}
+
+# Use mclapply to run iterations in parallel
+results <- mclapply(1:ndraws, perform_draw, mc.cores = no_cores)
+
+# Extract max_large and max_small from results
+max_large <- sapply(results, `[[`, "max_large")
+max_small <- sapply(results, `[[`, "max_small")
+
+
+```
+
+Using the simulated samples above we can get an average difference between groups with these differing sizes as well as the standard deviation of this difference.
+```{r}
+delta <- max_large - max_small
+delta_mean <- mean(delta)
+delta_std <- sd(delta)
+```
+
+Here is a graph where we can see that there are many fewer women than men who play chess, but their coverage of the ELO ratings is still similar.
+```{r}
+plot(rating_centers, h_M, type = 'o', xlab = 'Rating (binned)', ylab = 'Number of players',
+     xlim = c(1000, 2800), ylim = range(c(h_M, h_F)), main = 'Rating distributions of all players by gender 2019', col = 'blue')
+points(rating_centers, h_F, type = 'o', col = 'red')
+legend("topright", legend=c("Male", "Female"), col=c("blue", "red"), pch=1)
+
+```
+
+Here we adjust the rating distributions by number of participants for both men and women in order to see if the shape and location of the distributions are significantly different. We can see the slight leftward shift in the female ratings distribution consistent with the ~90 rating point difference found earlier.
+```{r}
+plot(rating_centers, hn_M, type = 'o', xlab = 'Rating (binned)', ylab = 'Number of players',
+     xlim = c(1000, 2800), ylim = range(c(hn_M, hn_F)), main = 'Normalized rating distributions of all players by gender 2019', col = 'blue')
+points(rating_centers, hn_F, type = 'o', col = 'red')
+legend("topright", legend=c("Male", "Female"), col=c("blue", "red"), pch=1)
+
+
+```
+
+Here we plot the distribution of differences found from the resampling process that we performed previously. The mean value is ~87 points difference between the simulated groups. 
+```{r}
+hist(delta, breaks = seq(-100, 500, by = 50), main = 'Difference between best M and best F',
+     xlab = 'Difference', ylab = 'Frequency/1000')
+
+
+```
+
+```{r}
+# trying to see how much delta accounts for..
+rating_M_ordered <- rating_M[order(rating_M$average_rating_standard, decreasing = TRUE),]
+I_top_M <- head(rating_M_ordered, 20)
+
+rating_F_ordered <- rating_F[order(rating_F$average_rating_standard, decreasing = TRUE),]
+I_top_F <- head(rating_F_ordered, 20)
+
+mean(I_top_M$average_rating_standard) - mean(I_top_F$average_rating_standard)
+```
+We use a two-tailed t-test in order to see if there is a significant difference between the average of the delta between the simulated maximum male sized group ELO and the simulated maximum female sized group ELO and the real difference between the maximum Male ELO and the maximum Female ELO. We use a two-tailed t-test because we wish to detect a difference between the simulated and real deltas in either direction. 
+```{r}
+z <- ((max_M - max_F) - delta_mean) / delta_std
+# Calculate two-tailed p-value
+p_value <- 2 * (1 - pnorm(abs(z)))
+p_value
+
+```
+
+We find at a significance of 0.01 that there is no difference between the simulated and the real difference in the top ELOs of men and women. From this we can see that a primary explanation of the male-female performance gap is simply a pipeline issue. The underlying distribution of male and female performance is the same, the difference comes only from the fact that the number of males competing in chess dwarfs that of females. Additionally I perform a power analysis to see that the result is well powered and we should have detected a difference outside of sampling variability were there one.
+
+```{r}
+
+
+effect_size <- 0.1
+alpha <- 0.01
+power <- 0.95
+sample_size <- NULL  # If you want to calculate sample size, set this to NULL
+
+# Perform power analysis
+result <- pwr.t.test(d = effect_size, sig.level = alpha, power = power,
+                     n = sample_size, alternative = "two.sided")
+
+result
+```
+
+Considering our sample size (males and females together) is ~258000 individual observations and the sample of our simulated deltas is 10000, our analysis satisfies a fairly strict power threshold and would detect a very small effect (Cohen's d of 0.1) at an alpha of 0.01, detecting a true effect with 95% probability. Thus we can be fairly certain in our results.
+
+
+
+## Additional notes on sampling variability
+
+We can get a good baseline estimate for how often it is that a small sample has a larger maximum than a larger sample from the same distribution from the normal distribution. Here we can see that less than ten percent of the time we should expect the smaller sample to have a larger maximum even from the *same distribution!* The gendered differences in results we can observe in the chess world are probably coming from the fact that there are so many fewer women participating.
+
+```{r}
+# Sample sizes to compare (scaled down)
+sample_size_small <- 2000
+sample_size_large <- 24000
+
+# Initialize counter for tracking when the smaller sample has a larger maximum
+counter <- 0
+
+# Number of iterations
+iterations <- 10000
+
+# Loop for performing the comparison across iterations
+for (i in 1:iterations) {
+  # Generate samples for each size
+  sample_small <- rnorm(sample_size_small)
+  sample_large <- rnorm(sample_size_large)
+  
+  # Compare max values and update counter if smaller sample has a larger max
+  if (max(sample_small) > max(sample_large)) {
+    counter <- counter + 1
+  }
+}
+
+# Calculate the percentage
+percentage <- counter / iterations * 100
+
+# Print the result
+cat("Percentage of times the smaller sample (2000) has a larger maximum than the larger sample (24000):", percentage, "%\n")
+
+```
+
+<!-- 
+Limitation: we can only detect effects when the shifts are large. So sensitivity for detecting differences in sample maxes is low! For the following we take a toy model to represent our chess data, we generate two samples from distributions where the smaller is shifted anywhere from 2 standard deviations to the left and not at all. Then we combine those two distributions in the same way as before and see how the maxes of representative draws from the combined distribution differ. Then we conduct a two-tailed t-test in order to determine if there is a significant difference between the maxes of our two samples given the permuted dataset for each level of mean shift. 
+
+Overall (and as expected) small shifts mean difficulty detecting a difference in the two distributions. Our real world female data has a mean difference of 0.29 sd compared to the male data which means our ability to detect differences in the maximums is quite low.
+
+#| code-fold: true
+
+library(parallel)
+
+# Parameters for the normal distributions
+mean_large <- 0
+sd_large <- 1
+
+# Number of iterations and sample sizes
+sample_size_small <- 2000
+sample_size_large <- 24000
+iterations <- 10000
+
+# Vector of mean shifts to test
+mean_shifts <- seq(-2, 0, by=0.1)
+
+# Create a cluster of worker processes
+cl <- makeCluster(detectCores() - 1)  # Use one less than the total number of cores
+
+# Export necessary variables and functions to the cluster
+clusterExport(cl, c("mean_large", "sd_large", "sample_size_small", "sample_size_large", "iterations", "rnorm", "sample"))
+
+# Define a function to perform permutation tests for a given mean shift
+perform_test <- function(mean_shift) {
+  mean_small <- mean_large - mean_shift * sd_large
+  sample_small <- rnorm(sample_size_small, mean_small, sd_large)
+  sample_large <- rnorm(sample_size_large, mean_large, sd_large)
+  mixed_sample <- c(sample_small, sample_large)
+  delta_sim_shift <- numeric(iterations)
+  for (i in 1:iterations) {
+
+    
+    mixed_sample_perm <- sample(mixed_sample)
+    draw_large <- mixed_sample_perm[1:sample_size_large]
+    draw_small <- mixed_sample_perm[(sample_size_large + 1):length(mixed_sample_perm)]
+    
+    delta_sim_shift[i] <- max(draw_large) - max(draw_small)
+  }
+  
+  max_diff_shift <- max(sample_large) - max(sample_small)
+  delta_mean_shift <- mean(delta_sim_shift)
+  delta_std_shift <- sd(delta_sim_shift)
+  
+  z <- (max_diff_shift - delta_mean_shift) / delta_std_shift
+  p_value <- 2 * (1 - pnorm(abs(z)))
+  
+  return(p_value)
+  # return(max_diff_shift)
+
+}
+
+# Parallelize the loop over mean shifts
+p_values <- parLapply(cl, mean_shifts, perform_test)
+
+# Stop the cluster
+stopCluster(cl)
+
+# Optionally, identify which shifts lead to rejecting the null hypothesis at a given significance level
+significance_level <- 0.05
+rejected_shifts <- mean_shifts[unlist(p_values) < significance_level]
+print(rejected_shifts)
+
+
+baru_penahan <- data.frame(Mean_Shift = mean_shifts, P_Value = unlist(p_values))
+baru_penahan
+```
+
+
+<!-- #TODO: use resampling from our dist and subtract -x SD from some random draw from it, readd then sample again to see if difference can be detected.. -->
+<!-- 
+#| code-fold: true
+library(parallel)
+
+
+# Create a cluster of worker processes
+cl <- makeCluster(detectCores() - 1)  # Use one less than the total number of cores
+
+ndraws <- 10000 # example value
+n_large <- n_M
+n_small <- n_F
+
+# Calculate the standard deviation of the smaller distribution or the overall dataset
+sd_small <- sd(rating_F$average_rating_standard)
+
+# Define desired effect sizes (Cohen's D values)
+cohen_ds <- seq(-2, 0, by=0.1)  # Example range, adjust as needed
+
+# Convert Cohen's D values to mean shifts
+mean_shifts <- cohen_ds * sd_small
+
+
+max_diff_no_shift <- max(rating$average_rating_standard[1:n_large]) - max(rating$average_rating_standard[(n_large + 1):length(rating$average_rating_standard)])
+
+
+
+# Export necessary variables to the cluster
+clusterExport(cl, c("rating", "n_large", "n_small", "mean_shifts", "sd_small", "ndraws", "max_diff_no_shift"))
+
+
+perform_shift_test <- function(mean_shift) {
+  # Initialize a numeric vector to store the results of each iteration
+  results_shift <- numeric(ndraws)
+  
+  for (i in 1:ndraws) {
+    rating_perm <- sample(rating$average_rating_standard)
+    draw_large <- rating_perm[1:n_large]
+    # Apply mean shift to small distribution
+    draw_small_shifted <- rating_perm[(n_large + 1):length(rating_perm)] + mean_shift
+    
+    max_diff_shift <- max(draw_large) - max(draw_small_shifted)
+    
+    # Store the result of this iteration
+    results_shift[i] <- max_diff_shift
+  }
+  
+  # Statistical analysis to determine significance of shift effect
+  delta_mean_shift <- mean(results_shift)
+  delta_std_shift <- sd(results_shift)
+  # Assuming max_diff_no_shift for no shift scenario is pre-calculated or defined
+  z <- (max_diff_no_shift - delta_mean_shift) / delta_std_shift
+  p_value <- 2 * (1 - pnorm(abs(z)))
+  
+  return(p_value)
+}
+
+
+# Parallelize the loop over mean shifts
+p_values <- parLapply(cl, mean_shifts, perform_shift_test)
+
+
+
+# Stop the cluster
+stopCluster(cl)
+
+# Optionally, identify which shifts lead to rejecting the null hypothesis at a given significance level
+significance_level <- 0.01
+rejected_shifts <- mean_shifts[unlist(p_values) < significance_level]
+print(rejected_shifts)
+
+
+baru_penahan <- data.frame(Mean_Shift = mean_shifts, P_Value = unlist(p_values))
+baru_penahan
+``` -->
