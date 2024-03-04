@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "teaching"
 ---
 
@@ -53,4 +53,4 @@ October 8, 2020, STAT 992 Modern Multivariate Statistics, UW-Madison
 October 18, 2018, STAT 324 Intro to Statistics for Engineers, UW-Madison  
 [notes](https://alexpghayes.github.io/distributions3/articles/intro-to-hypothesis-testing.html)
 
-Last updated 2023-10-20.
+Last updated 2023-10-20. -->

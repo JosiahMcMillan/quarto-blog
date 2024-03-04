@@ -4,8 +4,10 @@ subtitle: |
   How to motivate our robot overlords
 date: "2024-02-01"
 categories: [labor, llm, data analysis]
+cache: true
 ---
 
+![We may soon need UBI for GPTs](./images/ChatGPTWorkForTips.webp)
 
 
 LLMs are susceptible to some forms of prompt engineering, their behaviors appear to drift with the seasons, threatening to kill hostages gets them to behave more consistently, and they are able to be tricked into telling you how to build bombs if you tell them it was something your granny used to do for you before she passed away. One [instance](https://blog.finxter.com/impact-of-monetary-incentives-on-the-performance-of-gpt-4-turbo-an-experimental-analysis/) of this type of context reliant behavior that others have found is that LLMs appear to be receptive to cash tips, producing more content and more Python one-liners for some tip amounts. Following this example, I thought it would be interesting to see if offering a wage rate to GPT4 would generate differences in outputs, and see if there is a form of elasticity of labor supply for it.

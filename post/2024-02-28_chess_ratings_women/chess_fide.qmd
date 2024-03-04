@@ -20,6 +20,9 @@ cache: true
 
 Some have posited that there are differences between men and women which spring out of some genetic component somewhere deep in the chess parts of the brain that were responsible for early human victories over our greatest animal adversaries -- allowing us to stall for time with a friendly game of chess until members of our tribe could come spear our adversaries while played for a draw. Thus chess skill would necessarily be unevenly distributed among genders much as hunting was before our species settled down to enjoy some agriculture. Still others believe that chess has an issue with too few women playing which is what explains the majority of the gap between the performance at the highest levels of chess. Due to a lack of recorded games from prehistory, I instead seek to show this second explanation is sufficient for explaining this variation between the two genders in terms of performance.
 
+![Chess used to have higher stakes](./images/prehistoric_chess.webp)
+
+
 [Other authors](https://en.chessbase.com/post/what-gender-gap-in-chess) have discussed this topic somewhat at length and my code here is adapted from theirs, however my work here covers the whole universe of FIDE ratings rather than only the Indian ratings which should allow us to determine if this sampling variability explanation is merely an Indian phenomena or a broader phenomena.
 
 Due to Covid-19 impacting the number of chess competitions held I use 2019 data and take the average of every players standard ratings for the year to avoid some of the individual variability in ratings throughout the year, this also helps to keep more players in our dataset as those with only one tournament to their name from March can be compared to those who have multiple tournaments from other months not including March. 
