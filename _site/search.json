@@ -46,7 +46,7 @@
     "href": "resume/index.html#work-experience",
     "title": "Resume",
     "section": "Work Experience",
-    "text": "Work Experience"
+    "text": "Work Experience\n\n\n\nDaBella\n\nMarketing Data Analyst\n\n\n\nJuly 2019 - August 2020\n\n\n\nDeveloped statistical methods based on principal components analysis to cluster networks with missing data, to perform regression on networks, and to construct, interpret, and regularize network embeddings.\nDeveloped causal inference methods to estimate mediation and spillover effects in social networks, and to determine when product changes have harmful side-effects on behaviors that are difficult to measure. Used causal machine learning to improve precision of estimates while reducing computational requirements by a factor of 5000.\nImplemented research methods in user-friendly software. Released nine open source R packages to CRAN (notable: fastRG, vsp, distributions3, gdim, aPPR, fastadi).\nResolved computational bottlenecks in matrix completion algorithms by designing and implementing sparse matrix methods in R and C++. Scaled methods by three orders of magnitude to handle networks with millions of nodes.\nDesigned an approach to find localized clusters of Twitter users via Personalized PageRank. Managed unreliable Twitter API behavior by caching data in a Neo4J database running in Docker.\nCollaborated with ROpenSci to design software development standards for statistical software. Reviewed scientific software for ROpenSci, the R Journal, and the Journal of Open Source Software.\n\n\n\n\nFirst Security Bancorp\n\nFinance Analyst Intern\n\n\n\nSummer 2018\n\n\n\nPrototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL.\n\n\n\n\nDaBella\n\nSales Representative\n\n\n\nSummer 2017\n\n\n\nPrototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL."
   },
   {
     "objectID": "papers/index.html",
@@ -250,5 +250,19 @@
     "title": "We don’t know if Covid ages us epigenetically",
     "section": "Sampling",
     "text": "Sampling\nFinally I observed that there were similar distributions of age in the real data so in order to construct our sample to be similar we use stratified sampling to get equal groups of 50 for each age group in our synthetic data.\n\ntable(hospitalized$age_group)\n\n\n10-20 20-30 30-40 40-50 50-60 60-70 70-80 80-90 \n  126   519  1339  2379  2724  2098  5202  1390 \n\ntable(nonhospitalized$age_group)\n\n\n10-20 20-30 30-40 40-50 50-60 60-70 70-80 80-90 \n 1870  6637 15141 22896 21688 13389  1314   311 \n\nstrata_sizes &lt;- rep(50, length(unique(synthetic_data$age_group)))\n\n# Perform stratified sampling\nstrata_sample_hosp &lt;- strata(data = hospitalized, \n                        stratanames = c(\"age_group\"), \n                        size = strata_sizes, \n                        method = \"srswor\")\n\nstrata_sample_nonhosp &lt;- strata(data = nonhospitalized, \n                        stratanames = c(\"age_group\"), \n                        size = strata_sizes, \n                        method = \"srswor\")\n\nsampled_data_hosp &lt;- getdata(hospitalized, strata_sample_hosp)\nsampled_data_nonhosp &lt;- getdata(nonhospitalized, strata_sample_nonhosp)"
+  },
+  {
+    "objectID": "resume/index.html#education",
+    "href": "resume/index.html#education",
+    "title": "Resume",
+    "section": "Education",
+    "text": "Education\n\n\n\nKatholieke Universiteit of Leuven (KU Leuven)\n\nMSc Statistics\n\n\n\nFall 2023\n\n\n\n\n\nUniversity of Washington, Seattle\n\nB.S. Economics\n\n\n\n2019"
+  },
+  {
+    "objectID": "resume/index.html#skills",
+    "href": "resume/index.html#skills",
+    "title": "Resume",
+    "section": "Skills",
+    "text": "Skills\n\nNetwork analysis, embeddings, clustering, causal machine learning, interference, mediation\nData analysis, visualization, modeling, regression, generalized linear models, hypothesis testing\nProficient in R, Python, tidyverse, bash/unix, git; familiar with SQL, C++, Docker, AWS, Julia, Stan"
   }
 ]
