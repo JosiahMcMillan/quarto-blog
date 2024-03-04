@@ -39,14 +39,14 @@
     "href": "resume/index.html",
     "title": "Resume",
     "section": "",
-    "text": "This resume is available as a pdf."
+    "text": "This resume is available as a pdf.\nStatistician with 1 year of Data Analyst Experience working with marketing data to create new tools for canvassing managers, forecast future sales and marketing budget needs, and conduct analyses to optimize sales with a given budget. I have communicated both technical details to non-technical stakeholders and negotiated contracts from both the buy side with lead vendors and the sell side with homeowners looking to protect their largest investment. My work has allowed me to be engaged in forecasting and optimization of marketing budgets and the education I gained at KU Leuven has increased my statistical techne."
   },
   {
     "objectID": "resume/index.html#work-experience",
     "href": "resume/index.html#work-experience",
     "title": "Resume",
     "section": "Work Experience",
-    "text": "Work Experience\n\n\n\nDaBella\n\nMarketing Data Analyst\n\n\n\nJuly 2019 - August 2020\n\n\n\nDeveloped statistical methods based on principal components analysis to cluster networks with missing data, to perform regression on networks, and to construct, interpret, and regularize network embeddings.\nDeveloped causal inference methods to estimate mediation and spillover effects in social networks, and to determine when product changes have harmful side-effects on behaviors that are difficult to measure. Used causal machine learning to improve precision of estimates while reducing computational requirements by a factor of 5000.\nImplemented research methods in user-friendly software. Released nine open source R packages to CRAN (notable: fastRG, vsp, distributions3, gdim, aPPR, fastadi).\nResolved computational bottlenecks in matrix completion algorithms by designing and implementing sparse matrix methods in R and C++. Scaled methods by three orders of magnitude to handle networks with millions of nodes.\nDesigned an approach to find localized clusters of Twitter users via Personalized PageRank. Managed unreliable Twitter API behavior by caching data in a Neo4J database running in Docker.\nCollaborated with ROpenSci to design software development standards for statistical software. Reviewed scientific software for ROpenSci, the R Journal, and the Journal of Open Source Software.\n\n\n\n\nFirst Security Bancorp\n\nFinance Analyst Intern\n\n\n\nSummer 2018\n\n\n\nPrototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL.\n\n\n\n\nDaBella\n\nSales Representative\n\n\n\nSummer 2017\n\n\n\nPrototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL."
+    "text": "Work Experience\n\n\n\nDaBella\n\nMarketing Data Analyst\n\n\n\nJuly 2019 - August 2020\n\n\n\nReduced excess spend by an estimated $250,000 annually by on-boarding new software vendors to provide TCPA compliance and screen out duplicate prospects\nOptimized canvasser deployment increasing leads by 5% using cluster analysis and predictive modeling\nRan and A/B tested email campaigns to previous customers using Mailchimp and Zapier, leading to 10% increase in customer referrals\nProvided up to date reporting on the performance of the marketing funnel\nConducted meetings with lead vendors to target specific zipcodes and product classes using prior analysis to optimize sales given our marketing budget\nConstructed marketing budget proposals given new branch openings, product mixes, historical sales, and ramp up factors\nSought out and partnered with new lead vendors, negotiated pricing, and monitored sales attributable to these vendors\n\n\n\n\n1st Security Bank\n\nFinance Intern\n\n\n\nSummer 2018\n\n\n\nMigrated financial data from balance sheet from excel sheets over to new platform for more accessible data formatting\nCreated a forecast of key figures over the next three years based on past performance data and branch opening schedule using a heuristic model\n\n\n\n\nDaBella\n\nSales Representative\n\n\n\nSummer 2017\n\n\n\nDemonstrated a 30% closing rate on sales presentations, showing strong technical communication skills and the ability to build trust and value with stakeholders.\nSold new roofs to customers with a total one-month best of over $100,000 of product sold\nHelped customers to complete financing applications for contracts averaging $21,500 each, communicating financing details and important facts to non-technical stakeholders.\nAssisted customers in successfully navigating financing applications for contracts averaging, effectively translating loan application requirements to homeowners."
   },
   {
     "objectID": "papers/index.html",
@@ -172,7 +172,7 @@
     "href": "posts.html",
     "title": "posts",
     "section": "",
-    "text": "Chess Ratings and Gender gaps\n\n\nrevisiting sampling bias\n\n\n\n\n\n\n\n\n\nFeb 28, 2024\n\n\n16 min\n\n\n\n\n\n\n\n\nWe don’t know if Covid ages us epigenetically\n\n\nHow selection bias rules everything around us\n\n\n\n\n\n\n\n\n\nFeb 15, 2024\n\n\n14 min\n\n\n\n\n\n\n\n\nThe Elasticity of Labor for GPT-4\n\n\nHow to motivate our robot overlords\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\n9 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Chess Ratings and Gender gaps\n\n\nrevisiting sampling bias \n\n\n\n\n\n\n\n\nFeb 28, 2024\n\n\n16 min\n\n\n\n\n\n\n\nWe don’t know if Covid ages us epigenetically\n\n\nHow selection bias rules everything around us \n\n\n\n\n\n\n\n\nFeb 15, 2024\n\n\n14 min\n\n\n\n\n\n\n\nThe Elasticity of Labor for GPT-4\n\n\nHow to motivate our robot overlords \n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\n9 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "post/2024-02-01_paying_llms/index.html",
@@ -263,6 +263,6 @@
     "href": "resume/index.html#skills",
     "title": "Resume",
     "section": "Skills",
-    "text": "Skills\n\nNetwork analysis, embeddings, clustering, causal machine learning, interference, mediation\nData analysis, visualization, modeling, regression, generalized linear models, hypothesis testing\nProficient in R, Python, tidyverse, bash/unix, git; familiar with SQL, C++, Docker, AWS, Julia, Stan"
+    "text": "Skills\n\nNetwork analysis, embeddings, clustering, data simulation, and NLP\nData analysis, visualization, modeling, regression, generalized linear models, hypothesis testing\nProficient in R, Python, tidyverse, git, SQL. Familiarity with AWS, Stan"
   }
 ]

@@ -7,11 +7,12 @@ This resume is [available as a pdf](McMillan_Josiah_Resume_2024.pdf.pdf).
 
 <!-- Statistician with 6 years of experience analyzing network data, performing causal inference and building tools for data scientists. Track record of strategic thinking, clear communication and successful remote work. -->
 
+Statistician with 1 year of Data Analyst Experience working with marketing data to create new tools for canvassing managers, forecast future sales and marketing budget needs, and conduct analyses to optimize sales with a given budget. I have communicated both technical details to non-technical stakeholders and negotiated contracts from both the buy side with lead vendors and the sell side with homeowners looking to protect their largest investment. My work has allowed me to be engaged in forecasting and optimization of marketing budgets and the education I gained at KU Leuven has increased my statistical *techne*.
+
+
 ## Work Experience
 
 
-
- 
 :::: {.columns}
 ::: {.column width="90%" style="align: left;"}
 ##### **DaBella**
@@ -22,27 +23,26 @@ This resume is [available as a pdf](McMillan_Josiah_Resume_2024.pdf.pdf).
 :::
 ::::
 
-- Developed statistical methods based on principal components analysis to cluster networks with missing data, to perform regression on networks, and to construct, interpret, and regularize network embeddings.
-- Developed causal inference methods to estimate mediation and spillover effects in social networks, and to determine when product changes have harmful side-effects on behaviors that are difficult to measure. Used causal machine learning to improve precision of estimates while reducing computational requirements by a factor of 5000.
-- Implemented research methods in user-friendly software. Released nine open source R packages to CRAN (notable: [fastRG](https://rohelab.github.io/fastRG/), [vsp](https://rohelab.github.io/vsp/), [distributions3](https://alexpghayes.github.io/distributions3/), [gdim](https://rohelab.github.io/gdim/), [aPPR](https://rohelab.github.io/aPPR/), [fastadi](https://github.com/RoheLab/fastadi)).
-- Resolved computational bottlenecks in matrix completion algorithms by designing and implementing sparse matrix methods in R and C++. Scaled methods by three orders of magnitude to handle networks with millions of nodes.
-- Designed an approach to find localized clusters of Twitter users via Personalized PageRank. Managed unreliable Twitter API behavior by caching data in a Neo4J database running in Docker.
-- Collaborated with ROpenSci to design software development standards for statistical software. Reviewed scientific software for ROpenSci, the R Journal, and the Journal of Open Source Software.
-
-
+- Reduced excess spend by an estimated $250,000 annually by on-boarding new software vendors to provide TCPA compliance and screen out duplicate prospects
+- Optimized canvasser deployment increasing leads by 5% using cluster analysis and predictive modeling
+- Ran and A/B tested email campaigns to previous customers using Mailchimp and Zapier, leading to 10% increase in customer referrals
+- Provided up to date reporting on the performance of the marketing funnel
+- Conducted meetings with lead vendors to target specific zipcodes and product classes using prior analysis to optimize sales given our marketing budget 
+- Constructed marketing budget proposals given new branch openings, product mixes, historical sales, and ramp up factors 
+- Sought out and partnered with new lead vendors, negotiated pricing, and monitored sales attributable to these vendors
 
 :::: {.columns}
 ::: {.column width="70%" style="align: left;"}
-##### **First Security Bancorp**
-###### Finance Analyst Intern
+##### **1st Security Bank**
+###### Finance Intern
 :::
 ::: {.column width="30%" style="text-align: right;"}
 **Summer 2018**  
 :::
 ::::
 
-- Prototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL.
-
+- Migrated financial data from balance sheet from excel sheets over to new platform for more accessible data formatting
+- Created a forecast of key figures over the next three years based on past performance data and branch opening schedule using a heuristic model     
 
 :::: {.columns}
 ::: {.column width="70%" style="align: left;"}
@@ -54,7 +54,10 @@ This resume is [available as a pdf](McMillan_Josiah_Resume_2024.pdf.pdf).
 :::
 ::::
 
-- Prototyped a pipeline to automatically suggest relationships between hashtags, for a team using manual labeling. Prototype embedded a hashtag co-occurrence network and was implemented with Python, PyTorch and SQL.
+- Demonstrated a **30% closing rate** on sales presentations, showing strong technical communication skills and the ability to build trust and value with stakeholders.
+- Sold new roofs to customers with a total one-month best of over **$100,000** of product sold
+- Helped customers to complete financing applications for contracts averaging **$21,500** each, communicating financing details and important facts to non-technical stakeholders.
+- Assisted customers in successfully navigating financing applications for contracts averaging, effectively translating loan application requirements to homeowners.
 
 
 ## Education  
@@ -81,6 +84,6 @@ This resume is [available as a pdf](McMillan_Josiah_Resume_2024.pdf.pdf).
 
 ## Skills
 
-- Network analysis, embeddings, clustering, causal machine learning, interference, mediation
+- Network analysis, embeddings, clustering, data simulation, and NLP
 - Data analysis, visualization, modeling, regression, generalized linear models, hypothesis testing
-- Proficient in R, Python, tidyverse, bash/unix, git; familiar with SQL, C++, Docker, AWS, Julia, Stan 
+- Proficient in R, Python, tidyverse, git, SQL. Familiarity with AWS, Stan 
