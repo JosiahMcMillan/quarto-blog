@@ -7,7 +7,7 @@ about:
   image-shape: rounded
 ---
 
-I'm a recent graduate with a Master's Degree in Statistics from the Katholieke Universiteit of Leuven (KU Leuven) my degree track was Theoretical Statistics and Data Science. I completed my [thesis]() exploring count data models specifically I characterized a family of functions which were an extension of the Poisson which had greater flexibility in the dispersion settings and compared those to other count data models including tje Conway-Maxwell-Poisson Model. My previous work experience was focused on marketing data. I blog about statistics and data.  
+I'm a recent graduate with a Master's Degree in Statistics from the Katholieke Universiteit of Leuven (KU Leuven) my degree track was Theoretical Statistics and Data Science. I completed my [thesis](McMillan_Masters_final.pdf) exploring count data models specifically I characterized a family of functions which were an extension of the Poisson which had greater flexibility in the dispersion settings and compared those to other count data models including the Conway-Maxwell-Poisson Model. My previous work experience was focused on marketing data. I blog about statistics and data.  
 
 
 ### I'm looking for a job!

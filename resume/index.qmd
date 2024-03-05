@@ -3,7 +3,7 @@ title: "Resume"
 subtitle: "Data scientist & Statistician"
 ---
 
-This resume is [available as a pdf](McMillan_Josiah_Resume_2024.pdf.pdf).
+This resume is [available as a pdf](resume\McMillan_Josiah_Resume_2024.pdf).
 
 <!-- Statistician with 6 years of experience analyzing network data, performing causal inference and building tools for data scientists. Track record of strategic thinking, clear communication and successful remote work. -->
 
