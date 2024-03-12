@@ -26,13 +26,13 @@ When I was watching both Dune movies I noticed that the planet of Arrakis is tot
 # Sandworm Anatomy and Basal Caloric Needs
 I haven't read the books so I'm only able to go off of what I found on Wikipedia or the Dune wiki which quotes the books. For example we get the following information about sandworms length and diameter:
 
-	"Sandworms grow to hundreds of meters in length, with specimens observed over 400 metres (1,300 ft) long[[12]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Shai-Hulud-12)[[13]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-13) and 40 metres (130 ft) in diameter, although Paul becomes a sandrider by summoning a worm that "appeared to be" around half a [league](https://en.wikipedia.org/wiki/League_(unit) "League (unit)") (1.5 miles (2.4 km)) or more in length"
+> *"Sandworms grow to hundreds of meters in length, with specimens observed over 400 metres (1,300 ft) long[[12]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Shai-Hulud-12)[[13]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-13) and 40 metres (130 ft) in diameter, although Paul becomes a sandrider by summoning a worm that "appeared to be" around half a [league](https://en.wikipedia.org/wiki/League_(unit) "League (unit)") (1.5 miles (2.4 km)) or more in length"*
 
 Even though it appears that most specimens would be below the quoted 400 meters long and 40 meters in diameter (as those dimensions are specifically called out they are likely not the average) we will take this as our estimate for the average given the absence of additional information.
 
 An additional piece of information from the wiki is as follows:
 
-	"Herbert notes in _Dune_ that microscopic creatures called **sand plankton** feed upon traces of [melange](https://en.wikipedia.org/wiki/Melange_(fictional_drug) "Melange (fictional drug)") scattered by sandworms on the Arrakeen sands.[[16]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Appendix_I-16) The sand plankton are food for the giant sandworms, but also grow and burrow to become what the Fremen call **Little Makers**, "the half-plant-half-animal deep-sand vector of the Arrakis sandworm".[[17]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-17)"
+> *"Herbert notes in _Dune_ that microscopic creatures called **sand plankton** feed upon traces of [melange](https://en.wikipedia.org/wiki/Melange_(fictional_drug) "Melange (fictional drug)") scattered by sandworms on the Arrakeen sands.[[16]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Appendix_I-16) The sand plankton are food for the giant sandworms, but also grow and burrow to become what the Fremen call **Little Makers**, "the half-plant-half-animal deep-sand vector of the Arrakis sandworm".[[17]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-17)"*
 
 
 ### Calculations:

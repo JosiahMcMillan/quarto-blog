@@ -224,10 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sandworm-anatomy-and-basal-caloric-needs" class="level1">
 <h1>Sandworm Anatomy and Basal Caloric Needs</h1>
 <p>I haven’t read the books so I’m only able to go off of what I found on Wikipedia or the Dune wiki which quotes the books. For example we get the following information about sandworms length and diameter:</p>
-<pre><code>"Sandworms grow to hundreds of meters in length, with specimens observed over 400 metres (1,300&nbsp;ft) long[[12]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Shai-Hulud-12)[[13]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-13)&nbsp;and 40 metres (130&nbsp;ft) in diameter, although Paul becomes a sandrider by summoning a worm that "appeared to be" around half a&nbsp;[league](https://en.wikipedia.org/wiki/League_(unit) "League (unit)")&nbsp;(1.5 miles (2.4&nbsp;km)) or more in length"</code></pre>
+<blockquote class="blockquote">
+<p><em>“Sandworms grow to hundreds of meters in length, with specimens observed over 400 metres (1,300&nbsp;ft) long<a href="https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Shai-Hulud-12">[12]</a><a href="https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-13">[13]</a>&nbsp;and 40 metres (130&nbsp;ft) in diameter, although Paul becomes a sandrider by summoning a worm that”appeared to be” around half a&nbsp;<a href="https://en.wikipedia.org/wiki/League_(unit)" title="League (unit)">league</a>&nbsp;(1.5 miles (2.4&nbsp;km)) or more in length”</em></p>
+</blockquote>
 <p>Even though it appears that most specimens would be below the quoted 400 meters long and 40 meters in diameter (as those dimensions are specifically called out they are likely not the average) we will take this as our estimate for the average given the absence of additional information.</p>
 <p>An additional piece of information from the wiki is as follows:</p>
-<pre><code>"Herbert notes in&nbsp;_Dune_&nbsp;that microscopic creatures called&nbsp;**sand plankton**&nbsp;feed upon traces of&nbsp;[melange](https://en.wikipedia.org/wiki/Melange_(fictional_drug) "Melange (fictional drug)")&nbsp;scattered by sandworms on the Arrakeen sands.[[16]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Appendix_I-16)&nbsp;The sand plankton are food for the giant sandworms, but also grow and burrow to become what the Fremen call&nbsp;**Little Makers**, "the half-plant-half-animal deep-sand vector of the Arrakis sandworm".[[17]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-17)"</code></pre>
+<blockquote class="blockquote">
+<p><em>“Herbert notes in&nbsp;<em>Dune</em>&nbsp;that microscopic creatures called&nbsp;<strong>sand plankton</strong>&nbsp;feed upon traces of&nbsp;<a href="https://en.wikipedia.org/wiki/Melange_(fictional_drug)" title="Melange (fictional drug)">melange</a>&nbsp;scattered by sandworms on the Arrakeen sands.<a href="https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Appendix_I-16">[16]</a>&nbsp;The sand plankton are food for the giant sandworms, but also grow and burrow to become what the Fremen call&nbsp;<strong>Little Makers</strong>,”the half-plant-half-animal deep-sand vector of the Arrakis sandworm”.<a href="https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-17">[17]</a>“</em></p>
+</blockquote>
 <section id="calculations" class="level3">
 <h3 class="anchored" data-anchor-id="calculations">Calculations:</h3>
 <p>So lets assume that the sand worm is a perfect cylinder for our model.</p>
@@ -277,50 +281,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-hash="sandworm_cache/html/unnamed-chunk-1_4ffbd6db64a06c9dab3a9605ba4c454f">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the simplified model</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total_biomass <span class="ot">&lt;-</span> <span class="dv">1000000</span>  <span class="co"># Total constant biomass in the system (grams)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plankton_biomass <span class="ot">&lt;-</span> <span class="dv">800000</span>  <span class="co"># Initial biomass of sand plankton (grams)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>worm_biomass <span class="ot">&lt;-</span> total_biomass <span class="sc">-</span> plankton_biomass  <span class="co"># Initial biomass of sandworms (grams)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming sandworms need to consume 10% of their biomass daily to sustain their energy needs</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>daily_worm_consumption_rate <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 50% efficiency in converting consumed biomass into energy</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>consumption_efficiency <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation duration</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="dv">120</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors to store biomass data for plotting</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plankton_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>worm_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to simulate each day</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (day <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>days) {</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily energy needs for the sandworms</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  worm_energy_needs <span class="ot">&lt;-</span> worm_biomass <span class="sc">*</span> daily_worm_consumption_rate</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate how much plankton biomass is consumed</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  plankton_consumed <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust plankton and worm biomass based on consumption</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  plankton_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(plankton_biomass <span class="sc">-</span> plankton_consumed, <span class="dv">0</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  worm_biomass <span class="ot">&lt;-</span> worm_biomass <span class="sc">+</span> (plankton_consumed <span class="sc">*</span> consumption_efficiency) <span class="sc">-</span> worm_energy_needs</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for cannibalism if plankton is depleted</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (plankton_biomass <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    worm_consumed_for_energy <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    worm_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(worm_biomass <span class="sc">-</span> worm_consumed_for_energy, <span class="dv">0</span>)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the data</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  plankton_biomass_data[day] <span class="ot">&lt;-</span> plankton_biomass</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  worm_biomass_data[day] <span class="ot">&lt;-</span> worm_biomass</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the biomass data over time</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>days, plankton_biomass_data, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, total_biomass), <span class="at">xlab =</span> <span class="st">"Day"</span>, <span class="at">ylab =</span> <span class="st">"Biomass (grams)"</span>, <span class="at">main =</span> <span class="st">"Biomass Over Time"</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span>days, worm_biomass_data, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Plankton Biomass"</span>, <span class="st">"Worm Biomass"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the simplified model</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>total_biomass <span class="ot">&lt;-</span> <span class="dv">1000000</span>  <span class="co"># Total constant biomass in the system (grams)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>plankton_biomass <span class="ot">&lt;-</span> <span class="dv">800000</span>  <span class="co"># Initial biomass of sand plankton (grams)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>worm_biomass <span class="ot">&lt;-</span> total_biomass <span class="sc">-</span> plankton_biomass  <span class="co"># Initial biomass of sandworms (grams)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming sandworms need to consume 10% of their biomass daily to sustain their energy needs</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>daily_worm_consumption_rate <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 50% efficiency in converting consumed biomass into energy</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>consumption_efficiency <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation duration</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors to store biomass data for plotting</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plankton_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>worm_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to simulate each day</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (day <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>days) {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily energy needs for the sandworms</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  worm_energy_needs <span class="ot">&lt;-</span> worm_biomass <span class="sc">*</span> daily_worm_consumption_rate</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate how much plankton biomass is consumed</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  plankton_consumed <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust plankton and worm biomass based on consumption</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  plankton_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(plankton_biomass <span class="sc">-</span> plankton_consumed, <span class="dv">0</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  worm_biomass <span class="ot">&lt;-</span> worm_biomass <span class="sc">+</span> (plankton_consumed <span class="sc">*</span> consumption_efficiency) <span class="sc">-</span> worm_energy_needs</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for cannibalism if plankton is depleted</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (plankton_biomass <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    worm_consumed_for_energy <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    worm_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(worm_biomass <span class="sc">-</span> worm_consumed_for_energy, <span class="dv">0</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the data</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  plankton_biomass_data[day] <span class="ot">&lt;-</span> plankton_biomass</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  worm_biomass_data[day] <span class="ot">&lt;-</span> worm_biomass</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the biomass data over time</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>days, plankton_biomass_data, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, total_biomass), <span class="at">xlab =</span> <span class="st">"Day"</span>, <span class="at">ylab =</span> <span class="st">"Biomass (grams)"</span>, <span class="at">main =</span> <span class="st">"Biomass Over Time"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span>days, worm_biomass_data, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Plankton Biomass"</span>, <span class="st">"Worm Biomass"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="sandworm_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
