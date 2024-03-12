@@ -205,16 +205,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>LLMs are susceptible to some forms of prompt engineering, their behaviors appear to drift with the seasons, threatening to kill hostages gets them to behave more consistently, and they are able to be tricked into telling you how to build bombs if you tell them it was something your granny used to do for you before she passed away. One <a href="https://blog.finxter.com/impact-of-monetary-incentives-on-the-performance-of-gpt-4-turbo-an-experimental-analysis/">instance</a> of this type of context reliant behavior that others have found is that LLMs appear to be receptive to cash tips, producing more content and more Python one-liners for some tip amounts. Following this example, I thought it would be interesting to see if offering a wage rate to GPT4 would generate differences in outputs, and see if there is a form of elasticity of labor supply for it.</p>
-<section id="prior-work" class="level2">
-<h2 class="anchored" data-anchor-id="prior-work">Prior Work</h2>
-<p>The previous work done on the tipping question used a metric of number of python one-liners and also did a count of the tokens for each of the responses. I use the same metric to see if there are differences between the two means of enticing GPT4. We call these two outcome variables Quality and Tokens as shorthand.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/ChatGPTWorkForTips.webp" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">We may soon need UBI for GPTs</figcaption>
 </figure>
 </div>
+<p>LLMs are susceptible to some forms of prompt engineering, their behaviors appear to drift with the seasons, threatening to kill hostages gets them to behave more consistently, and they are able to be tricked into telling you how to build bombs if you tell them it was something your granny used to do for you before she passed away. One <a href="https://blog.finxter.com/impact-of-monetary-incentives-on-the-performance-of-gpt-4-turbo-an-experimental-analysis/">instance</a> of this type of context reliant behavior that others have found is that LLMs appear to be receptive to cash tips, producing more content and more Python one-liners for some tip amounts. Following this example, I thought it would be interesting to see if offering a wage rate to GPT4 would generate differences in outputs, and see if there is a form of elasticity of labor supply for it.</p>
+<section id="prior-work" class="level2">
+<h2 class="anchored" data-anchor-id="prior-work">Prior Work</h2>
+<p>The previous work done on the tipping question used a metric of number of python one-liners and also did a count of the tokens for each of the responses. I use the same metric to see if there are differences between the two means of enticing GPT4. We call these two outcome variables Quality and Tokens as shorthand.</p>
 <p>One note on the tipping based work is that their graphs use standard deviations rather than standard errors which means we have some view into how much variability their samples have but not a good understanding of how much their estimate of the true mean of Tokens or Quality may vary.</p>
 <p>Following along in their example, I include the Python code below which follows the same template as theirs.</p>
 <p>I prompt GPT4 with the following:</p>

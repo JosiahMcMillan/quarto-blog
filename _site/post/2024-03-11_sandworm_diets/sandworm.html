@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-03-10">
+
+<title>Josiah McMillan - The Ecology of Arrakis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Josiah McMillan - The Ecology of Arrakis">
+<meta property="og:description" content="Would you still love me if I was a Sandworm?">
+<meta property="og:image" content="https://www.josiahmcmillan.com/post/2024-03-11_sandworm_diets/images/for_respected_anon.png">
+<meta property="og:site-name" content="Josiah McMillan">
+<meta property="og:image:height" content="1068">
+<meta property="og:image:width" content="1252">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Josiah McMillan</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">about</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume/index.html" rel="" target="">
+ <span class="menu-text">resume</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/josiahmcmillan" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/josiahmcmillan/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The Ecology of Arrakis</h1>
+            <p class="subtitle lead"></p><p>Would you still love me if I was a Sandworm?</p><p></p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">ecology</div>
+                <div class="quarto-category">dune</div>
+                <div class="quarto-category">simulation</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 10, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sandworm-anatomy-and-basal-caloric-needs" id="toc-sandworm-anatomy-and-basal-caloric-needs" class="nav-link active" data-scroll-target="#sandworm-anatomy-and-basal-caloric-needs">Sandworm Anatomy and Basal Caloric Needs</a>
+  <ul class="collapse">
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations:</a></li>
+  </ul></li>
+  <li><a href="#sandworms-as-filter-feeders" id="toc-sandworms-as-filter-feeders" class="nav-link" data-scroll-target="#sandworms-as-filter-feeders">Sandworms as filter feeders</a></li>
+  <li><a href="#further-limits-to-plausibility" id="toc-further-limits-to-plausibility" class="nav-link" data-scroll-target="#further-limits-to-plausibility">Further Limits to Plausibility</a>
+  <ul class="collapse">
+  <li><a href="#modelling-a-population-without-outside-energy" id="toc-modelling-a-population-without-outside-energy" class="nav-link" data-scroll-target="#modelling-a-population-without-outside-energy">Modelling a population without outside energy</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/josiahmcmillan/quarto-blog/edit/main/post/2024-03-11_sandworm_diets/sandworm.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/josiahmcmillan/quarto-blog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/for_respected_anon.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">Desert Ecology, Simplified</figcaption>
+</figure>
+</div>
+<p>I, like many others, saw Dune 2 recently. And beyond the secret cults, prophetic visions, and Christopher Walken led space empire I got to wondering how the most iconic creatures in the world of dune actually manage to exist on such a barren planet.</p>
+<p>For those who have not seen any of the Dune movies past or present here’s a little background. The Dune universe, is set in a distant future where interstellar societies vie for control over planets and resources. Central to the series is the desert planet Arrakis, also known as Dune. It is the only source of melange, or “the spice,” a substance that enhances mental abilities, extends life, and enables space navigation. The ecology of Arrakis is harsh and unforgiving, characterized by vast deserts, scarce water, and extreme temperatures.</p>
+<p>A unique aspect of Arrakis is its ecosystem, evolved to thrive under these extreme conditions. The most iconic inhabitants are the giant sandworms, or Shai-Hulud, which play a critical role in the spice cycle. The sandworms are colossal creatures, worshiped by the native Fremen as sacred beings. The planet’s ecology revolves around the life cycle of these sandworms, with various species, including the sand plankton and little makers, contributing to the production of spice.</p>
+<p>When I was watching both Dune movies I noticed that the planet of Arrakis is totally barren, no megafauna besides the sandworms exist (besides apparently some large centipedes) and it appears that the sandworms despite being gargantuan would be unable to sustain themselves eating native fauna. I also thought about how many humans a sandworm would have to eat and given that the number of calories in a 145 lb human body is about 125,822<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, it seems that humans are probably not a sustainable food source for the sand worms. So I got digging in order to find out how Sandworms may be able to sustain themselves on Arrakis.</p>
+<section id="sandworm-anatomy-and-basal-caloric-needs" class="level1">
+<h1>Sandworm Anatomy and Basal Caloric Needs</h1>
+<p>I haven’t read the books so I’m only able to go off of what I found on Wikipedia or the Dune wiki which quotes the books. For example we get the following information about sandworms length and diameter:</p>
+<pre><code>"Sandworms grow to hundreds of meters in length, with specimens observed over 400 metres (1,300&nbsp;ft) long[[12]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Shai-Hulud-12)[[13]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-13)&nbsp;and 40 metres (130&nbsp;ft) in diameter, although Paul becomes a sandrider by summoning a worm that "appeared to be" around half a&nbsp;[league](https://en.wikipedia.org/wiki/League_(unit) "League (unit)")&nbsp;(1.5 miles (2.4&nbsp;km)) or more in length"</code></pre>
+<p>Even though it appears that most specimens would be below the quoted 400 meters long and 40 meters in diameter (as those dimensions are specifically called out they are likely not the average) we will take this as our estimate for the average given the absence of additional information.</p>
+<p>An additional piece of information from the wiki is as follows:</p>
+<pre><code>"Herbert notes in&nbsp;_Dune_&nbsp;that microscopic creatures called&nbsp;**sand plankton**&nbsp;feed upon traces of&nbsp;[melange](https://en.wikipedia.org/wiki/Melange_(fictional_drug) "Melange (fictional drug)")&nbsp;scattered by sandworms on the Arrakeen sands.[[16]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-Appendix_I-16)&nbsp;The sand plankton are food for the giant sandworms, but also grow and burrow to become what the Fremen call&nbsp;**Little Makers**, "the half-plant-half-animal deep-sand vector of the Arrakis sandworm".[[17]](https://en.wikipedia.org/wiki/Sandworm_(Dune)#cite_note-17)"</code></pre>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations:</h3>
+<p>So lets assume that the sand worm is a perfect cylinder for our model.</p>
+<p>The equation for the volume of a cylinder is</p>
+<p><span class="math inline">\(V = \pi r^{2} h\)</span></p>
+<p>Given previous observations:</p>
+<p><span class="math inline">\(V = \pi * 400*400\)</span> <span class="math inline">\(V \approx 500000\)</span></p>
+<p>Now we can use the Kleiber Formula to estimate the basal caloric requirements of a sand worm, note this does <strong><em>not</em></strong> include the calorie expenditure from locomotion or other energy expenditures.</p>
+<p><span class="math inline">\(Kcal/Day = 50(1040*500000)^{3/4}\)</span></p>
+<p><span class="math inline">\(Kcal/Day \approx 172000000\)</span></p>
+<p>On a 2000 Calorie per day diet recommended for an average person, each sand worm of this size would eat the same number of calories as a town of 86,000 people. Just 96 sandworms eat the same number of calories as New York city does each day. It’s a lot of food!</p>
+<p>Now the next problem we should consider is how much material does a sandworm need to sift through in order to meet its caloric needs? What sort of calories do the sand plankton produce and in what densities are they found that could reasonably approximate the needs of the sandworms?</p>
+</section>
+</section>
+<section id="sandworms-as-filter-feeders" class="level1">
+<h1>Sandworms as filter feeders</h1>
+<p>One source that I found for the plankton biomass in a highly eutrophic lake comes from the following source <a href="plankton_biomass.pdf">which finds wet weight of phytoplankton per cubic meter of water.</a> Highly eutrophic means that the oxygen in the body of water has declined to the point that animals begin to die off. This highly eutrophic environment is perfect for algal blooms:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/River_algae_Sichuan.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">I don’t recall seeing this in the movie</figcaption>
+</figure>
+</div>
+<p>So given that highly eutrophic environments are the perfect breeding ground for phytoplankton we can take our highest estimate for plankton living on Dune from these types of lakes. The wet weight of the phytoplankton found from the lake in question was 680 grams per cubic meter of water, the caloric information for phytoplankton I found is expressed in terms of dry weight so using a deflation factor of 5 <strong>source this</strong> we can convert wet weight to dry weight and get the calories per cubic meter of water.</p>
+<p><span class="math inline">\(680 \frac{g}{m^{3}} * \frac{1}{5} * \frac{400\text{Cal}}{100g} = \frac{544\text{Cal}}/{m^{3}}\)</span></p>
+<p>So if a Sandworm acted as a baleen whale and was able to convert 100% of the calories in the plankton on Arrakis it would have to process 316176 cubic meters of water per day which turns out to be around 126 olympic swimming pools of water. Consider</p>
+<p>But Sandworms don’t live in the water. And do they even filter feed? The mouth doesn’t look arranged such that they can filter out water in the same way that a whale does – which occurs by forcing water out of the corners of the mouth – based on the movie the Sandworms appear to eat the sand itself without much care? In any case, phytoplankton can exist in the densities they do in bodies of water due to light penetrating the water, otherwise if they were on land they must live on the surface only in order to convert sunlight into usable energy.</p>
+<p>Further calculation could illuminate this, lets assume that phytoplankton are only on the surface of the sand or just under it as winds reshape the dunes on top of them. We could expect, perhaps unreasonably, that this phytoplankton is 5mm thick over the surface of Arrakis. If this is the case then in order to get the same number of calories the sandworms must traverse an area 200x larger than before. As we read before, the sandworms have a diameter of 40m given images from the movie and using a tool to count pixels I found that the edges of the mouth are around 110 pixels wide on each side and the mouth itself is about 725 pixels wide. So taking this ratio of 220:725 we can find the diameter of the worms mouth and then the area itself to get an understanding of how many cubic meters could enter the worm’s mouth at once.</p>
+<p><span class="math inline">\(((40m * (1- \frac{220}{725}))*(\frac{1}{2}))^{2}*\pi = 615m^{2}\)</span></p>
+<p>So as the worm travels along if it keeps its mouth fully open to filter the sand then for each meter it moves along it can fully consume 615 cubic meters of sand. If we were in the highly eutrophic water scenario then it would only take about 514 meters of travel for the sandworm to sate its basal metabolic needs. Given the previous assumption about 5mm thickness of phytoplankton on the surface then the worm must travel 102 km per day to get this need met. It’s clear why the worms would be so sensitive to rhythmic motions then, as humans or other biomass with higher calorie counts would be much more appealing sources of calories than long distance travel especially since we haven’t even factored in the calorie requirements of travelling at high speeds with such massive bodies.</p>
+</section>
+<section id="further-limits-to-plausibility" class="level1">
+<h1>Further Limits to Plausibility</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/sandworm_lunch.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">This type of diet doesn’t seem very sustainable</figcaption>
+</figure>
+</div>
+<p>And this is by assuming that the energy that the sandplankton is coming from the sun rather than the spice melange as written in the books. Given that the sandplankton feed on spice melange which is a byproduct of the worms themselves and the worms are a later stage of the sandplankton then the energy in the system must be decreasing over time unless there is some outside source of energy.</p>
+<p>The offerings of bodies to Shai Hulud at various moments in both Dune 1 and 2 are insufficient to correct this issue unless humans or other animals are brought to Arrakis to be offered en masse (a standard worm would require &gt;1300 humans each day).</p>
+<p>All of this to say, in my own meandering way, that if Frank Herbert had written that the sandplankton fed on something other than the spice melange or converted sunlight to energy there could be some maybe-sorta-kinda guise of plausibility, but with the ecology of Dune as it is the sandworms population would only shrink until extinction.</p>
+<section id="modelling-a-population-without-outside-energy" class="level2">
+<h2 class="anchored" data-anchor-id="modelling-a-population-without-outside-energy">Modelling a population without outside energy</h2>
+<p>Back here on earth we have organisms that can produce organic matter from inorganic matter through different processes like photosynthesis. This turns out to be quite important. If the sandworms and sandplankton are unable to generate energy from outside sources such as the sand or the sun then we quickly run into problems. Only using spice scattered by the worms leads to no new energy being introduced into the system. As a reminder, in the books it is noted that sandworms will eat smaller sandworms and sandplankton. If this is the only source of energy for these sandworms we quickly run into problems.</p>
+<p>Below is a simple demonstration of the Donner party nature of Arrakis if we don’t have outside energy from either the sun or the sand. Starting with a certain biomass of both sandworms and sandplankton, as the sandworms eat the sandplankton there is a depletion of the total biomass in the system.</p>
+<div class="cell" data-hash="sandworm_cache/html/unnamed-chunk-1_4ffbd6db64a06c9dab3a9605ba4c454f">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the simplified model</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total_biomass <span class="ot">&lt;-</span> <span class="dv">1000000</span>  <span class="co"># Total constant biomass in the system (grams)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plankton_biomass <span class="ot">&lt;-</span> <span class="dv">800000</span>  <span class="co"># Initial biomass of sand plankton (grams)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>worm_biomass <span class="ot">&lt;-</span> total_biomass <span class="sc">-</span> plankton_biomass  <span class="co"># Initial biomass of sandworms (grams)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming sandworms need to consume 10% of their biomass daily to sustain their energy needs</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>daily_worm_consumption_rate <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 50% efficiency in converting consumed biomass into energy</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>consumption_efficiency <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation duration</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors to store biomass data for plotting</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plankton_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>worm_biomass_data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(days)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to simulate each day</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (day <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>days) {</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily energy needs for the sandworms</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  worm_energy_needs <span class="ot">&lt;-</span> worm_biomass <span class="sc">*</span> daily_worm_consumption_rate</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate how much plankton biomass is consumed</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  plankton_consumed <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust plankton and worm biomass based on consumption</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  plankton_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(plankton_biomass <span class="sc">-</span> plankton_consumed, <span class="dv">0</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  worm_biomass <span class="ot">&lt;-</span> worm_biomass <span class="sc">+</span> (plankton_consumed <span class="sc">*</span> consumption_efficiency) <span class="sc">-</span> worm_energy_needs</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for cannibalism if plankton is depleted</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (plankton_biomass <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    worm_consumed_for_energy <span class="ot">&lt;-</span> worm_energy_needs <span class="sc">*</span> consumption_efficiency</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    worm_biomass <span class="ot">&lt;-</span> <span class="fu">max</span>(worm_biomass <span class="sc">-</span> worm_consumed_for_energy, <span class="dv">0</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the data</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  plankton_biomass_data[day] <span class="ot">&lt;-</span> plankton_biomass</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  worm_biomass_data[day] <span class="ot">&lt;-</span> worm_biomass</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the biomass data over time</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>days, plankton_biomass_data, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, total_biomass), <span class="at">xlab =</span> <span class="st">"Day"</span>, <span class="at">ylab =</span> <span class="st">"Biomass (grams)"</span>, <span class="at">main =</span> <span class="st">"Biomass Over Time"</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span>days, worm_biomass_data, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Plankton Biomass"</span>, <span class="st">"Worm Biomass"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="sandworm_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>I suppose to conclude it seems like the world of Arrakis is one of fiction. A simple fix to this system would be to make the sandworms themselves able to convert the sand into energy and biomass or allow the same for sandplankton. We could also balance the world of Arrakis if we allow for sandplankton to be autotrophic and either highly calorie dense or otherwise carpet the world of Dune in implausible ways so sandworms could meet their caloric needs.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>https://www.nature.com/articles/srep44707<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/josiahmcmillan/quarto-blog">website source</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
