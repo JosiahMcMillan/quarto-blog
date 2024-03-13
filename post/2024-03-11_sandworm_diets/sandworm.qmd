@@ -61,8 +61,10 @@ Lets assume a sandworm is made up of dense muscle fibers, perhaps its made up of
 
 
 $\text{Sandworm Metabolic Rate} = (1040*500000)^{3/4}$
+
 $\text{Sandworm Metabolic Rate} = 3443519$ 
-$Kcal/Day \approx 3443519 * 1800 = 6198334200$
+
+$\text{Kcal/Day} \approx 3443519 * 1800 = 6198334200$
 
 On a 2000 Calorie per day diet recommended for an average person, each sand worm of this size would eat the same number of calories as a town of 3,099,167 people. Just 1 sandworm eats more calories than Chicago  does each day. It's a lot of food!
 
@@ -77,7 +79,7 @@ Highly eutrophic means that the oxygen in the body of water has declined to the 
 
 So given that highly eutrophic environments are the perfect breeding ground for phytoplankton we can take our highest estimate for plankton living on Dune from these types of lakes. The wet weight of the phytoplankton found from the lake in question was 680 grams per cubic meter of water, the caloric information for phytoplankton I found is expressed in terms of dry weight so using a deflation factor of 5 **source this** we can convert wet weight to dry weight and get the calories per cubic meter of water.
 
-$680 \frac{g}{m^{3}} * \frac{1}{5} * \frac{400\text{Cal}}{100g} = \frac{544\text{Cal}}/{m^{3}}$
+$680 \frac{g}{m^{3}} * \frac{1}{5} * \frac{400\text{Cal}}{100g} = \frac{544\text{Cal}}{m^{3}}$
 
 So if a Sandworm acted as a baleen whale and was able to convert 100% of the calories in the plankton on Arrakis it would have to process roughly 11,400,000 cubic meters of water per day which turns out to be around 4500 olympic swimming pools of water. Consider 
 
@@ -97,7 +99,7 @@ So as the worm travels along if it keeps its mouth fully open to filter the sand
 
 And this is by assuming that the energy that the sandplankton is coming from the sun rather than the spice melange as written in the books. Given that the sandplankton feed on spice melange which is a byproduct of the worms themselves and the worms are a later stage of the sandplankton then the energy in the system must be decreasing over time unless there is some outside source of energy. 
 
-The offerings of bodies to Shai Hulud at various moments in both Dune 1 and 2 are insufficient to correct this issue unless humans or other animals are brought to Arrakis to be offered en masse (a standard worm would require >1300 humans each day). 
+The offerings of bodies to Shai Hulud at various moments in both Dune 1 and 2 are insufficient to correct this issue unless humans or other animals are brought to Arrakis to be offered en masse (a standard worm would require >49000 humans each day). 
 
 All of this to say, in my own meandering way, that if Frank Herbert had written that the sandplankton fed on something other than the spice melange or converted sunlight to energy there could be some maybe-sorta-kinda guise of plausibility, but with the ecology of Dune as it is the sandworms population would only shrink until extinction.
 
