@@ -3,7 +3,7 @@ title: "Horse Racing as an Unsubtle Metaphor"
 subtitle: | 
   Aren't you the horse from Horsin' Around?
 date: "2024-07-12"
-categories: [betting, horses, elections]
+categories: [betting, simulation, elections]
 editor: visual
 cache: true
 df_print: tibble

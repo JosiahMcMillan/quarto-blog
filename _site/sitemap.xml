@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.josiahmcmillan.com/index.html</loc>
-    <lastmod>2024-03-12T01:25:28.612Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.josiahmcmillan.com/posts.html</loc>
-    <lastmod>2024-03-12T01:25:25.853Z</lastmod>
+    <lastmod>2024-07-12T18:07:43.362Z</lastmod>
   </url>
   <url>
-    <loc>https://www.josiahmcmillan.com/talks/index.html</loc>
-    <lastmod>2024-02-25T20:08:27.760Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/resume/index.html</loc>
-    <lastmod>2024-03-12T01:25:24.374Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/papers/index.html</loc>
-    <lastmod>2024-02-25T20:08:25.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/post/2017-08-07_gentle-tidy-eval/index.html</loc>
-    <lastmod>2024-02-25T20:08:25.019Z</lastmod>
+    <loc>https://www.josiahmcmillan.com/index.html</loc>
+    <lastmod>2024-07-12T18:07:42.154Z</lastmod>
   </url>
   <url>
     <loc>https://www.josiahmcmillan.com/code/index.html</loc>
-    <lastmod>2024-02-25T20:08:27.001Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/teaching/index.html</loc>
-    <lastmod>2024-03-12T01:25:24.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/post/2024-02-01_paying_llms/index.html</loc>
-    <lastmod>2024-03-12T01:25:20.626Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/post/2024-02-28_chess_ratings_women/chess_fide.html</loc>
-    <lastmod>2024-03-12T01:28:20.159Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.josiahmcmillan.com/post/2024-02-15_covid_causality/covid_causality.html</loc>
-    <lastmod>2024-03-04T17:17:24.593Z</lastmod>
+    <lastmod>2024-07-12T18:07:41.258Z</lastmod>
   </url>
   <url>
     <loc>https://www.josiahmcmillan.com/post/2024-03-11_sandworm_diets/sandworm.html</loc>
-    <lastmod>2024-03-13T02:08:58.941Z</lastmod>
+    <lastmod>2024-07-12T18:07:38.530Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/post/2024-07-12_horse_racing/horse_racing.html</loc>
+    <lastmod>2024-07-12T18:07:35.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/post/2024-02-01_paying_llms/index.html</loc>
+    <lastmod>2024-07-12T18:07:23.979Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/post/2024-02-28_chess_ratings_women/chess_fide.html</loc>
+    <lastmod>2024-07-12T18:07:37.254Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/post/2024-02-15_covid_causality/covid_causality.html</loc>
+    <lastmod>2024-07-12T18:07:39.849Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/resume/index.html</loc>
+    <lastmod>2024-07-12T18:07:40.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/talks/index.html</loc>
+    <lastmod>2024-07-12T18:07:41.706Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.josiahmcmillan.com/teaching/index.html</loc>
+    <lastmod>2024-07-12T18:07:42.558Z</lastmod>
   </url>
 </urlset>
