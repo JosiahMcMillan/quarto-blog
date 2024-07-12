@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "talks"
 ---
 
@@ -120,4 +120,4 @@ Broom is a package that converts statistical objects into tibbles. This consiste
 
 **Your First R Package**  
 2018-02-22, Rice DataSci club  
-[slides](https://github.com/alexpghayes/rice-data-sci-first-r-package-workshop)
+[slides](https://github.com/alexpghayes/rice-data-sci-first-r-package-workshop) -->

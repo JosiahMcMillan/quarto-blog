@@ -74,4 +74,4 @@ Last updated on 2023-08-05.
 <!-- :::: -->
 
 <!-- - Advised psychologists, biologists and neuroscientists on experimental design, experimental data analysis, data visualization, project management and statistical communication -->
-<!-- - Created reports to clearly communicate key takeaways from experimental data, using reproducible analysis practices to allow for easy extension and collaboration -->
+- Created reports to clearly communicate key takeaways from experimental data, using reproducible analysis practices to allow for easy extension and collaboration

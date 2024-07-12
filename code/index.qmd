@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "code"
 bibliography: code.bib
 ---
@@ -32,4 +32,4 @@ I have been involved in a number of open source projects in the `tidyverse` and 
 
 I also wrote the [`distributions3`](https://github.com/alexpghayes/distributions3) package, which provides an S3 interface to distribution functions, with an emphasis on good documentation and beginner friendly design. The [vignettes](https://alexpghayes.github.io/distributions3/dev/articles/) in particular are designed to walk students intro stat courses though a litany of classic hypothesis tests. I do not actively maintain `distributions3` but there is small community of invested contributors.
 
-Last updated 2023-10-20.
+Last updated 2023-10-20. -->
