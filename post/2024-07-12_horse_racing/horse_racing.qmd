@@ -11,7 +11,7 @@ format: html
 code-fold: true
 ---
 
-![He's nearly glue but he's stuck with us](./images/horse_politician.jpeg){width=80%}
+![He's nearly glue but we're stuck with him](./images/horse_politician.jpeg){width=80%}
 
 
 # This isn't about anything in particular
