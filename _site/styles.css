@@ -1,1 +1,17 @@
-/* css styles */
+/* Target the title and date sections directly */
+
+/* Adjusts space below the title */
+.title-block h1 {
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+/* Adjusts space above the publish date */
+.post-meta {
+  margin-top: 5px; /* Adjust as needed */
+}
+
+/* You might need to target any wrapping div or spacing classes Quarto applies */
+.title-block, .subtitle-block, .post-meta {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
